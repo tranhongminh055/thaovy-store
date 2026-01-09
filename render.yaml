@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: thaovy-store
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: AUTH_SECRET
+        sync: false
+      - key: SHOP_EMAIL
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
