@@ -12,18 +12,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
 // Import auth handlers
-const authLoginHandler = require('./netlify/functions/auth-login').handler;
-const authRegisterHandler = require('./netlify/functions/auth-register').handler;
-const authLogoutHandler = require('./netlify/functions/auth-logout').handler;
-const authRefreshHandler = require('./netlify/functions/auth-refresh').handler;
-const authSessionsHandler = require('./netlify/functions/auth-sessions').handler;
-const supportSendHandler = require('./netlify/functions/support-send').handler;
-const supportMessagesHandler = require('./netlify/functions/support-messages').handler;
+let authLoginHandler, authRegisterHandler, authLogoutHandler, authRefreshHandler, authSessionsHandler, supportSendHandler, supportMessagesHandler;
+
+try {
+  authLoginHandler = require('./netlify/functions/auth-login').handler;
+  authRegisterHandler = require('./netlify/functions/auth-register').handler;
+  authLogoutHandler = require('./netlify/functions/auth-logout').handler;
+  authRefreshHandler = require('./netlify/functions/auth-refresh').handler;
+  authSessionsHandler = require('./netlify/functions/auth-sessions').handler;
+  supportSendHandler = require('./netlify/functions/support-send').handler;
+  supportMessagesHandler = require('./netlify/functions/support-messages').handler;
+} catch (err) {
+  console.error('Error importing handlers:', err.message);
+  process.exit(1);
+}
 
 // Connect to MongoDB on startup
-connectDB().catch(err => {
-  console.error('Failed to connect to MongoDB:', err);
-  process.exit(1);
+connectDB().then(() => {
+  console.log('MongoDB connected successfully');
+}).catch(err => {
+  console.error('Failed to connect to MongoDB:', err.message);
+  // Don't exit - allow server to run without DB for now
 });
 
 // API Routes - wrap Netlify Functions
