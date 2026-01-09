@@ -2,6 +2,11 @@
   "name": "thaovy-store",
   "version": "1.0.0",
   "description": "Thảo Vy Store - Shop Giày chính hiệu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "dependencies": {
     "axios": "^1.5.0",
     "bcryptjs": "^2.4.3",
