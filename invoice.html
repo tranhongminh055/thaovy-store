@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hóa đơn - ThaoVyStore</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="invoice.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- site header copied from index for consistent look -->
+  <header id="header">
+    <div class="header-top">
+      <div class="container flex-between">
+        <div class="logo">
+          <a href="index.html"><img src="src/Brown Beige Retro Shoe Store Logo.png" alt="Logo"></a>
+        </div>
+        <div class="header-search">
+          <input type="text" id="search-input" placeholder="Bạn muốn tìm gì?">
+          <button><i class="fas fa-search"></i></button>
+          <ul id="search-suggestions" class="suggestions-list"></ul>
+        </div>
+        <div class="header-hotline">
+          <i class="fas fa-phone-volume"></i> <span>Hotline: 1800 2097</span>
+        </div>
+        <div class="header-account">
+          <a href="account.html"><i class="fas fa-user"></i> <span id="userEmail"></span></a>
+        </div>
+        <div id="cart-icon" class="cart-icon">
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="header-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+          <li><a href="#promo"><i class="fas fa-tags"></i> Khuyến mãi</a></li>
+          <li><a href="#news"><i class="fas fa-newspaper"></i> Tin tức</a></li>
+          <li><a href="stores.html"><i class="fas fa-store"></i> Hệ thống cửa hàng</a></li>
+          <li><a href="#support"><i class="fas fa-question-circle"></i> Hỗ trợ</a></li>
+          <li><a href="orders.html"><i class="fas fa-history"></i> Lịch sử đơn hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container invoice-main">
+    <section class="panel">
+      <h1>Hóa đơn</h1>
+    </section>
+
+    <section class="panel invoice-panel">
+      <div id="invoice" class="invoice-card">
+        <!-- Invoice content rendered by JS -->
+      </div>
+
+      <div class="invoice-actions">
+        <button id="downloadPdf" class="btn primary">Tải PDF</button>
+        <button id="sendEmail" class="btn">Gửi email</button>
+        <a href="index.html" class="btn back-home-btn">Về trang chủ</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <script>
+    (function(){
+      function formatVND(n){ return Number(n||0).toLocaleString('vi-VN') + ' VND'; }
+      // load order by viewOrderId or fallback to last orderData
+      let order = null;
+      try{
+        const id = localStorage.getItem('viewOrderId');
+        const orders = JSON.parse(localStorage.getItem('orders')||'[]');
+        if(id){ order = orders.find(o=>o.orderId === id) || null; }
+        if(!order){ order = JSON.parse(localStorage.getItem('orderData')||'null'); }
+      }catch(e){ order = JSON.parse(localStorage.getItem('orderData')||'null'); }
+
+      const invoiceEl = document.getElementById('invoice');
+      if(!order){ invoiceEl.innerHTML = '<div class="muted">Không tìm thấy hoá đơn.</div>'; return; }
+
+      // sync logged user into header (same pattern as other pages)
+      try{
+        const u = JSON.parse(localStorage.getItem('loggedUser')) || JSON.parse(localStorage.getItem('loggedInUser')) || null;
+        if(u && (u.email || u.user)) document.getElementById('userEmail').innerText = (u.email || u.user);
+      }catch(e){}
+
+      // Render invoice (compact company info inside card; remove large logo image)
+      const banner = `<div class="inv-header"><div class="company-info"><h2>ThaoVyStore</h2><div class="muted">Địa chỉ: 123 Đường ABC, Quận X, TP HCM · Email: hello@thaovystore.vn · Điện thoại: 0123 456 789</div></div></div>`;
+
+      const header = `<div class="inv-head"><div class="meta"><div>Mã: <strong>${order.orderId||''}</strong></div><div>Ngày: ${order.orderDate||''}</div><div>Trạng thái: ${order.status||''}</div></div></div>`;
+
+      const customer = order.customer || {};
+      const addr = (customer.addressStructured) ? [customer.addressStructured.detail, customer.addressStructured.ward, customer.addressStructured.district, customer.addressStructured.city].filter(Boolean).join('\n') : (customer.address || '');
+      const recipient = `<div class="inv-section"><h3>Người nhận</h3><div><strong>${customer.name||''}</strong></div><div>${customer.phone||''}</div><pre class="inv-address">${addr}</pre></div>`;
+
+      const productsHtml = (order.products||[]).map(p=>`<div class="inv-product"><div class="inv-p-left"><img src="${p.image||'src/giay nam dep.jfif'}"/></div><div class="inv-p-mid"><div class="name">${p.name}</div><div>Số lượng: ${p.quantity||1}</div></div><div class="inv-p-right">${formatVND(p.price)}</div></div>`).join('');
+      const productsSection = `<div class="inv-section"><h3>Sản phẩm</h3>${productsHtml}</div>`;
+
+      const payment = order.payment || {};
+      let paymentHtml = '<div class="inv-section"><h3>Thanh toán</h3><div>Phương thức: COD</div></div>';
+      if(payment.method === 'credit-card'){
+        const d = payment.details || {};
+        paymentHtml = `<div class="inv-section"><h3>Thanh toán</h3><div>Phương thức: Thẻ tín dụng</div><div>Số thẻ: ${d.cardNumber||'--'}</div><div>Tên chủ thẻ: ${d.cardHolder||'--'}</div></div>`;
+      }else if(payment.method === 'bank-transfer'){
+        const d = payment.details || {};
+        paymentHtml = `<div class="inv-section"><h3>Thanh toán</h3><div>Phương thức: Chuyển khoản</div><div>Ngân hàng: ${d.bank||'--'}</div><div>Số tài khoản: ${d.accountNumber||'--'}</div><div>Tên chủ TK: ${d.accountName||'--'}</div><div>Nội dung: ${d.note||'--'}</div></div>`;
+      }
+
+      const totals = `
+        <div class="inv-section inv-totals">
+          <div class="inner">
+            <div class="row subtotal"><span class="label">Tạm tính</span><span class="value">${formatVND(order.subtotal||0)}</span></div>
+            <div class="row discount"><span class="label">Giảm</span><span class="value">-${formatVND(order.discount||0)}</span></div>
+            <div class="row total"><span class="label">Tổng</span><span class="value">${formatVND(order.total||((order.subtotal||0)-(order.discount||0)))}</span></div>
+          </div>
+        </div>`;
+
+      const footerHtml = `<div class="inv-footer"><div class="left"></div><div class="right"></div></div>`;
+
+      invoiceEl.innerHTML = banner + header + recipient + productsSection + paymentHtml + totals + footerHtml;
+
+      // download PDF
+      document.getElementById('downloadPdf').addEventListener('click', ()=>{
+        const opt = { margin:10, filename: `${(order.orderId||'invoice').replace(/[#\s]/g,'')}.pdf`, image:{ type:'jpeg', quality:0.98 }, html2canvas:{ scale:2 }, jsPDF:{ unit:'mm', format:'a4', orientation:'portrait' } };
+        html2pdf().set(opt).from(invoiceEl).save();
+      });
+
+      // send email: generate pdf (download) then open mailto to user email
+      document.getElementById('sendEmail').addEventListener('click', async ()=>{
+        const userEmail = order.userEmail || (order.customer && order.customer.email) || '';
+        const filename = `${(order.orderId||'invoice').replace(/[#\s]/g,'')}.pdf`;
+        const opt = { margin:10, filename, image:{ type:'jpeg', quality:0.98 }, html2canvas:{ scale:2 }, jsPDF:{ unit:'mm', format:'a4', orientation:'portrait' } };
+        try{
+          // generate and download PDF for user to attach
+          await html2pdf().set(opt).from(invoiceEl).save();
+        }catch(e){ console.warn('PDF generation failed', e); }
+        // open mail client with prefilled subject/body (cannot attach automatically from browser)
+        const subject = encodeURIComponent('Hoá đơn ' + (order.orderId||''));
+        let body = `Kính gửi ${customer.name||''},\n\nVui lòng tìm hoá đơn của bạn (tệp PDF đính kèm) cho đơn ${order.orderId||''}.\n\nNếu bạn chưa thấy file, đã được tải xuống trong trình duyệt của bạn. Vui lòng đính kèm file khi gửi qua email này.\n\nTrân trọng,\nThaoVyStore`;
+        body = encodeURIComponent(body);
+        const mailto = 'mailto:' + (userEmail || '') + '?subject=' + subject + '&body=' + body;
+        window.location.href = mailto;
+      });
+
+    })();
+  </script>
+</body>
+</html>

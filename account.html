@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hồ Sơ Của Tôi - ThaoVyStore</title>
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+<div class="account-container">
+
+    <!-- MENU TRÁI -->
+    <div class="account-menu">
+        <div class="avatar-box">
+            <img id="avatarPreview" src="https://cdn-icons-png.flaticon.com/512/847/847969.png">
+            <input type="file" id="avatarUpload" accept="image/*">
+        </div>
+
+        <h3 id="displayName">User</h3>
+
+        <ul>
+            <li class="active" data-section="profileSection">Hồ Sơ</li>
+            <li data-section="bankSection">Ngân Hàng</li>
+            <li data-section="addressSection">Địa Chỉ</li>
+            <li data-section="passwordSection">Đổi Mật Khẩu</li>
+        </ul>
+    </div>
+
+    <!-- BÊN PHẢI -->
+    <div class="account-content">
+
+        <!-- Hồ sơ -->
+        <div id="profileSection" class="content-box">
+            <h2>Hồ sơ của tôi</h2>
+            <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+            <label>Họ và Tên</label>
+            <input type="text" id="fullName">
+
+            <label>Email</label>
+            <input type="email" id="email" readonly>
+
+            <label>Giới tính</label>
+            <select id="gender">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+
+            <label>Ngày sinh</label>
+            <input type="date" id="birthday">
+
+            <button class="save-btn" id="saveProfile">Lưu thay đổi</button>
+        </div>
+
+        <!-- Ngân hàng -->
+        <div id="bankSection" class="content-box hidden">
+            <h2>Ngân hàng</h2>
+            <label>Tên ngân hàng</label>
+            <select id="bankName">
+                <option value="">Chọn ngân hàng</option>
+            </select>
+
+            <label>Số tài khoản</label>
+            <input type="text" id="bankNumber">
+
+            <button class="save-btn" id="saveBank">Lưu</button>
+        </div>
+
+                <!-- Địa chỉ -->
+                <div id="addressSection" class="content-box hidden">
+                        <h2>Địa chỉ nhận hàng</h2>
+                        <label>Tỉnh/Thành phố</label>
+                        <select id="city"></select>
+
+                        <label>Quận/Huyện</label>
+                        <select id="district"></select>
+
+                        <label>Phường/Xã</label>
+                        <select id="ward"></select>
+
+                        <label>Địa chỉ chi tiết</label>
+                        <input type="text" id="addressDetail" placeholder="Số nhà, tên đường, thôn/xóm">
+
+                        <div style="width:100%; margin-top:10px;">
+                            <button class="save-btn" id="saveAddress">Lưu</button>
+                        </div>
+                </div>
+        <!-- Đổi mật khẩu -->
+        <div id="passwordSection" class="content-box hidden">
+            <h2>Đổi mật khẩu</h2>
+
+            <label>Mật khẩu cũ</label>
+            <input type="password" id="oldPass">
+
+            <label>Mật khẩu mới</label>
+            <input type="password" id="newPass">
+
+            <button class="save-btn" id="changePass">Đổi mật khẩu</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="account.js"></script>
+</body>
+</html>

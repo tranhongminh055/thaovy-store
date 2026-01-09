@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Giới thiệu - ThaoVyStore</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Header (reuse site header) -->
+  <header id="header">
+    <div class="header-top">
+      <div class="container flex-between">
+        <div class="logo">
+          <a href="index.html"><img src="src/Brown Beige Retro Shoe Store Logo.png" alt="Logo"></a>
+        </div>
+        <div class="header-search">
+          <input type="text" id="search-input" placeholder="Bạn muốn tìm gì?">
+          <button id="search-btn"><i class="fas fa-search"></i></button>
+          <ul id="search-suggestions" class="suggestions-list"></ul>
+        </div>
+        <div class="header-hotline"><i class="fas fa-phone-volume"></i> Hotline: 1800 2097</div>
+        <div class="header-account"><a href="account.html"><i class="fas fa-user"></i> <span id="userEmail">Đăng nhập</span></a></div>
+        <div class="header-cart"><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+          <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+          <li><a href="#locations"><i class="fas fa-map-marker-alt"></i> Cửa hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="about-main container">
+    <!-- Search results (appear when user searches) -->
+    <div id="search-results" class="search-results hidden container">
+      <h2>Kết quả tìm kiếm</h2>
+      <div id="searchProducts" class="product-list"></div>
+    </div>
+    <section class="hero">
+      <h1>ThaoVyStore — Thời trang & Giày chính hãng</h1>
+      <p>Chúng tôi cung cấp các mẫu giày thời thượng, dịch vụ nhanh chóng và chuỗi cửa hàng trải dài các thành phố lớn.</p>
+    </section>
+
+    <section class="about-box">
+      <h2>Về chúng tôi</h2>
+      <p>ThaoVyStore ra đời với sứ mệnh mang đến sản phẩm chất lượng, dịch vụ tận tâm và trải nghiệm mua sắm thoải mái cho khách hàng. Từ lựa chọn sản phẩm, bảo hành đến hậu mãi, chúng tôi luôn đặt khách hàng lên hàng đầu.</p>
+      <div class="features">
+        <div class="feat"><i class="fas fa-shipping-fast"></i><h4>Giao nhanh</h4><p>Giao trong 2-3 ngày.</p></div>
+        <div class="feat"><i class="fas fa-award"></i><h4>Chính hãng</h4><p>Sản phẩm chính hãng 100%.</p></div>
+        <div class="feat"><i class="fas fa-headset"></i><h4>Hỗ trợ 24/7</h4><p>Hỗ trợ & tư vấn mọi lúc.</p></div>
+      </div>
+    </section>
+
+    <section id="locations" class="locations">
+      <h2>Hệ thống cửa hàng</h2>
+      <div class="locations-grid">
+        <div class="branches">
+          <button class="branch" data-q="ThaoVyStore Đà Nẵng">ThaoVyStore - Đà Nẵng</button>
+          <button class="branch" data-q="ThaoVyStore Hà Nội">ThaoVyStore - Hà Nội</button>
+          <button class="branch" data-q="ThaoVyStore Hồ Chí Minh">ThaoVyStore - Hồ Chí Minh</button>
+          <button class="branch" data-q="ThaoVyStore Hải Phòng">ThaoVyStore - Hải Phòng</button>
+        </div>
+
+        <div class="map-area">
+          <div class="map-wrapper">
+            <iframe id="gmaps" src="https://www.google.com/maps?q=ThaoVyStore+Đà+Nẵng&output=embed" frameborder="0" style="border:0" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="branch-info" id="branchInfo">
+            <h3>ThaoVyStore - Đà Nẵng</h3>
+            <p>Địa chỉ: 123 Nguyễn Văn Linh, Q.Hải Châu, Đà Nẵng</p>
+            <p>Giờ mở cửa: 9:00 - 21:00</p>
+            <p>Hotline: 090-xxx-xxxx</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Liên hệ</h2>
+      <p>Email: support@thaovystore.vn • Hotline: 1800 2097</p>
+    </section>
+  </main>
+
+  <script src="about.js"></script>
+  <script src="about-search.js"></script>
+  <script src="cart-count.js"></script>
+    <script src="fix-mobile.js"></script>
+  <script>
+    // Sync header user display from localStorage (small convenience)
+    (function(){
+      try{
+        const u = JSON.parse(localStorage.getItem('loggedUser')) || JSON.parse(localStorage.getItem('loggedInUser'));
+        if (u && u.email) document.getElementById('userEmail').innerText = u.email;
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>

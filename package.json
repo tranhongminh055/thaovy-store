@@ -1,0 +1,18 @@
+{
+  "name": "thaovy-store",
+  "version": "1.0.0",
+  "description": "Thảo Vy Store - Shop Giày chính hiệu",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "imap-simple": "^5.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mailparser": "^3.6.7",
+    "mongoose": "^8.21.0",
+    "nodemailer": "^6.9.7",
+    "uuid": "^9.0.0"
+  }
+}

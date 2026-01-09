@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thảo Vy Store — Shop Giày chính hiệu | Thảo Vy Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thảo Vy Store - Cửa hàng giày chính hãng, đa dạng mẫu mã: Nike, Adidas, Converse... Mua online, giao hàng tận nơi, hotline 1800 2097.">
+    <link rel="canonical" href="https://thaovy-store.netlify.app/">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Thảo Vy Store — Shop Giày chính hiệu">
+    <meta property="og:description" content="Thảo Vy Store - Cửa hàng giày chính hãng, nhiều mẫu mã, giao hàng toàn quốc.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thaovy-store.netlify.app/">
+    <meta property="og:image" content="https://thaovy-store.netlify.app/src/Brown%20Beige%20Retro%20Shoe%20Store%20Logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Thảo Vy Store — Shop Giày chính hiệu">
+    <meta name="twitter:description" content="Thảo Vy Store - Cửa hàng giày chính hãng, nhiều mẫu mã, giao hàng toàn quốc.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-9791592367160102">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9791592367160102" crossorigin="anonymous"></script>
+</head>
+<body>
+
+        <!-- Structured Data: Organization -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Thảo Vy Store",
+            "url": "https://thaovy-store.netlify.app/",
+            "logo": "https://thaovy-store.netlify.app/src/Brown%20Beige%20Retro%20Shoe%20Store%20Logo.png",
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+84-1800-2097",
+                "contactType": "customer service",
+                "areaServed": "VN"
+            }],
+            "sameAs": [
+                "https://www.facebook.com/",
+                "https://www.instagram.com/"
+            ]
+        }
+        </script>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-top">
+            <div class="container flex-between">
+                <div class="logo">
+                    <a href="#"><img src="src/Brown Beige Retro Shoe Store Logo.png" alt="Logo"></a>
+                </div>
+                <div class="header-search">
+                    <input type="text" id="search-input" placeholder="Bạn muốn tìm gì?">
+                    <button><i class="fas fa-search"></i></button>
+                    <ul id="search-suggestions" class="suggestions-list"></ul>
+                </div>
+                <div class="header-hotline">
+                    <a href="18002097"></a>
+                    <i class="fas fa-phone-volume"></i> <span>Hotline: 1800 2097</span>
+                </div>
+                <div class="header-account">
+                                            <a href="account.html">
+                                            <i class="fas fa-user"></i>
+                                            <span id="userEmail"></span>
+                                        </a>
+                                </div>
+                <!-- Giỏ hàng -->
+                <div id="cart-icon" class="cart-icon">
+                                        <a href="cart.html">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span id="cart-count">0</span>
+                                    </a>
+                                </div>
+                        </div>
+                </div>
+    
+        <nav class="header-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+                    <li><a href="#promo"><i class="fas fa-tags"></i> Khuyến mãi</a></li>
+                    <li><a href="#news"><i class="fas fa-newspaper"></i> Tin tức</a></li>
+                    <li><a href="stores.html"><i class="fas fa-store"></i> Hệ thống cửa hàng</a></li>
+                    <li><a href="support.html"><i class="fas fa-question-circle"></i> Hỗ trợ</a></li>
+                    <li><a href="orders.html"><i class="fas fa-history"></i> Lịch sử đơn hàng</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="gallery-display-area">
+            <div class="gallery-wrap">
+                <div class="slide active">
+                    <img src="src/zalo21920x1080.jpg" alt="Adidas Gold">
+                </div>
+                <div class="slide">
+                    <img src="src/mau-giay-adidas-tao-trend.jpg" alt="Adidas Silver">
+                </div>
+                <div class="slide">
+                    <img src="src/sale adidas.jpg" alt="Giày Đá Bóng">
+                </div>
+                <div class="slide">
+                    <img src="src/discount 1.jpg" alt="Adidas Galaxy">
+                </div>
+                <div class="slide">
+                    <img src="src/poster-giay-1.jpg" alt="Louis Vuitton">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Danh mục -->
+    <section class="categories container">
+        
+            <div class="category-item" data-page="giay-nike.html">
+                <i class="fas fa-shoe-prints"></i>
+                <span>Giày Nike</span>
+            </div>
+
+            <div class="category-item" data-page="giay-adidas.html">
+                <i class="fas fa-shoe-prints"></i>
+                <span>Giày Adidas</span>
+            </div>
+            <div class="category-item" data-page="giay-converse.html">
+                <i class="fas fa-shoe-prints"></i>
+                <span>Giày Converse</span>
+            </div>
+            <div class="category-item" data-page="giay-vans.html">
+                <i class="fas fa-running"></i>
+                <span>Giày Vans</span>
+            </div>
+            <div class="category-item" data-page="giay-tre-em.html">
+                <i class="fas fa-child"></i>
+                <span>Giày trẻ em</span>
+            </div>
+    </section>
+    <!-- Sản phẩm nổi bật -->
+    <!-- Google AdSense Banner -->
+    <div class="container" style="text-align: center; margin: 30px 0;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9791592367160102"
+             data-ad-slot="1234567890"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <section class="products container">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="product-list">
+            <div class="product-card">
+                <img src="src/giay-the-thao-nam-adidas-galaxy-6-hp2416-mau-xanh-dam-size-44-6771ffad4a016-30122024090429.webp" alt="Nike Air">
+                <h3>Nike Air Max 2025</h3>
+                <div class="price">2.200.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+            <div class="product-card">
+                <img src="src/giay nam dep.jfif" alt="Adidas">
+                <h3>Adidas UltraBoost</h3>
+                <div class="price">2.500.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/louis vutton.jpg" alt="Adidas">
+                <h3>Adidas Sport</h3>
+                <div class="price">2.900.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/b692c9562c49ccb7d224f427a53bf935.jpg" alt="Adidas">
+                <h3>Adidas American</h3>
+                <div class="price">3.500.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/Giy Tennis Nam Adidas Barricade M GW2963 Phi Mu-anh-5.webp" alt="Adidas">
+                <h3>Adidas Premium</h3>
+                <div class="price">2.500.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/Thiet-ke-chua-co-ten-73-1.jpg" alt="Adidas">
+                <h3>Adidas Gold</h3>
+                <div class="price">4.500.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/sg-11134201-22100-7vlfiz21k4iv43.jfif" alt="Converse">
+                <h3>Converse Classic</h3>
+                <div class="price">950.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+            <div class="product-card">
+                <img src="src/giay-nike-air-zoom-pegasus-39-premium-nam-trang-xanh-05-1000x1000.jpg" alt="Vans">
+                <h3>Vans Old Skool</h3>
+                <div class="price">1.150.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/giay da bong.jpg" alt="Vans">
+                <h3>Adidas football</h3>
+                <div class="price">1.150.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+        </div>
+
+        <div class="product-card">
+                <img src="src/adidas gold.jpeg" alt="Vans">
+                <h3>Shoe Classic</h3>
+                <div class="price">1.150.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/adidas silver.jpeg" alt="Vans">
+                <h3>Biti's Premium</h3>
+                <div class="price">1.150.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+            <div class="product-card">
+                <img src="src/adidas silver 2.jfif" alt="Vans">
+                <h3>Adidas Silver</h3>
+                <div class="price">1.150.000đ</div>
+                <button class="add-to-cart">Mua ngay</button>
+            </div>
+
+
+    </section>
+    <!-- Khuyến mãi -->
+    <section id="promo" class="promo container">
+    <h2>Khuyến mãi mới nhất</h2>
+    <div class="promo-content">
+        <img src="src/discount 1.jpg" alt="Promo">
+            <div class="promo-desc">
+            <h3>Giảm đến 30% các mẫu mới</h3>
+            <p>Giảm giá hấp dẫn cho tất cả khách hàng mới và cũ. Nhận mã ngay!</p>
+            <button data-voucher="SALE10">Nhận mã giảm giá</button>
+        </div>
+    </div>
+</section>
+            <section class="promo container">
+        <h2>Khuyến mãi mới nhất</h2>
+        <div class="promo-content">
+            <img src="src/zalo21920x1080.jpg" alt="Promo">
+                <div class="promo-desc">
+                <h3>Giảm đến 50% các mẫu mới</h3>
+                <p>Giảm giá hấp dẫn cho tất cả khách hàng khi thanh toán qua Zalo Pay. Nhận mã ngay!</p>
+                <button data-voucher="SALE20">Nhận mã giảm giá</button>
+            </div>
+        </div>
+            </section>
+            <section class="promo container">
+        <h2>Khuyến mãi mới nhất</h2>
+        <div class="promo-content">
+            <img src="src/adidas hoi vien.jpg" alt="Promo">
+            <div class="promo-desc">
+                <h3>Giảm đến 200.000đ các mẫu mới</h3>
+                <p>Giảm giá hấp dẫn cho tất cả khách hàng là hội viên vàng của shop. Nhận mã ngay!</p>
+                <button data-voucher="FREESHIP">Nhận mã giảm giá</button>
+            </div>
+            </div>
+    </section>
+            <section class="promo container">
+        <h2>Khuyến mãi mới nhất</h2>
+        <div class="promo-content">
+            <img src="src/point adidas.jfif" alt="Promo">
+            <div class="promo-desc">
+                <h3>Thêm 200 điểm vào tài khoản hội viên</h3>
+                <p>Quy đổi thành voucher giảm giá. Nhận mã ngay!</p>
+                <button data-voucher="POINT200">Nhận mã giảm giá</button>
+            </div>
+
+        </div>
+    </section>
+    <!-- Tin tức -->
+    <section id="news" class="news container">
+        <h2>Tin tức nổi bật</h2>
+        <!-- Chi tiết bài viết (hiển thị khi bấm vào một mục) -->
+        <div id="news-detail" class="news-detail hidden">
+            <h3 id="news-detail-title"></h3>
+            <p id="news-detail-body"></p>
+        </div>
+
+        <div class="news-list">
+            <div class="news-item" data-url="https://www.maisononline.vn/blogs/news/giay-hot-2025?srsltid=AfmBOoofqAqsq3lqH3pC3WsuJZ3IXmi63YZ9II45ElAQdvC3nXPd1f9u">
+                <img src="src/mau-giay-adidas-tao-trend.jpg" alt="Tin giày">
+                <div class="news-info">
+                    <h3>Top mẫu giày hot 2025</h3>
+                    <p>Khám phá xu hướng giày mới nhất năm nay...</p>
+                </div>
+            </div>
+            <div class="news-item" data-url="https://www.adidas.com.vn/vi/end_of_season_sale">
+                <img src="src/sale adidas.jpg" alt="Event">
+                <div class="news-info">
+                    <h3>Sự kiện sale cuối tuần</h3>
+                    <p>Giảm giá cực sốc các dòng giày thể thao...</p>
+                </div>
+            </div>
+            <div class="news-item" data-url="https://dily.vn/blog/dang-ban-chan-pho-bien-chon-giay-phu-hop-voi-tung-dang-chan.html?srsltid=AfmBOoqo0gJbBp2vPO6Siuqj4z2b0DmpS6dps4BaC04T3HQ4w6F5IlnY">
+                <img src="src/bang-size-giay-adidas-va-cach-chon-size-giay-adidas-vua-van-nhat-24092022092531.jpg" alt="Blog">
+                <div class="news-info">
+                    <h3>Cách chọn giày phù hợp</h3>
+                    <p>Bí quyết lựa chọn giày chuẩn size, đúng kiểu...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-top">
+            <div class="footer-col">
+                <h4>Thông tin</h4>
+                <ul>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="stores.html">Hệ thống cửa hàng</a></li>
+                    <li><a href="recruitment.html">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Chính sách</h4>
+                <ul>
+                    <li><a href="warranty.html">Bảo hành đổi trả</a></li>
+                    <li><a href="checkout.html">Thanh toán & giao hàng</a></li>
+                    <li><a href="privacy.html">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Hỗ trợ khách hàng</h4>
+                <ul>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="faq.html">Câu hỏi thường gặp</a></li>
+                    <li><a href="huong-dan-mua-hang.html">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kết nối</h4>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/be.la.minh.739188/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@endermantv6933"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@shibichi2005"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/_____t.hm____/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Thảo Vy Shop - .Shoe Store-. All rights reserved.
+        </div>
+    </footer>
+    <script src="voucher.js"></script>
+    <script src="index.js"></script>
+    <script>
+        // Lấy user đang đăng nhập
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+if (loggedUser) {
+    // Hiển thị email vào Header
+    document.getElementById("userEmail").innerText =
+        loggedUser.email || "User";
+
+} else {
+    // Nếu chưa login -> nút đăng nhập
+    document.getElementById("userEmail").innerText = "Đăng nhập";
+}
+
+// filepath: d:\Project\code\index.html
+let currentSlide = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.slide');
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Tự động chuyển slide sau 5 giây
+setInterval(() => {
+    changeSlide(1);
+}, 3000);
+
+// Xử lý click trên category items
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryItems = document.querySelectorAll('.category-item[data-page]');
+    categoryItems.forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                window.location.href = page;
+            }
+        });
+    });
+});
+</script>
+    <script src="fix-mobile.js"></script>
+</body>
+</html>

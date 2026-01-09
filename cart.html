@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng - Thảo Vy Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Header copied from index.html -->
+  <header id="header">
+    <div class="header-top">
+      <div class="container flex-between">
+        <div class="logo">
+          <a href="#"><img src="src/Brown Beige Retro Shoe Store Logo.png" alt="Logo"></a>
+        </div>
+        <div class="header-search">
+          <input type="text" id="search-input" placeholder="Bạn muốn tìm gì?">
+          <button><i class="fas fa-search"></i></button>
+          <ul id="search-suggestions" class="suggestions-list"></ul>
+        </div>
+        <div class="header-hotline">
+          <a href="18002097"></a>
+          <i class="fas fa-phone-volume"></i> <span>Hotline: 1800 2097</span>
+        </div>
+        <div class="header-account">
+          <a href="account.html">
+            <i class="fas fa-user"></i>
+            <span id="userEmail"></span>
+          </a>
+        </div>
+        <!-- Giỏ hàng -->
+        <div id="cart-icon" class="cart-icon">
+          <a href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+          <li><a href="#promo"><i class="fas fa-tags"></i> Khuyến mãi</a></li>
+          <li><a href="#news"><i class="fas fa-newspaper"></i> Tin tức</a></li>
+          <li><a href="stores.html"><i class="fas fa-store"></i> Hệ thống cửa hàng</a></li>
+          <li><a href="#support"><i class="fas fa-question-circle"></i> Hỗ trợ</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="cart-container">
+    <!-- Title removed (header is displayed above) -->
+
+    <div class="cart-content">
+      <!-- Danh sách sản phẩm -->
+      <div class="cart-items">
+        <div class="cart-header">
+          <div>Sản phẩm</div>
+          <div>Tên sản phẩm</div>
+          <div>Giá</div>
+          <div>Số lượng</div>
+          <div>Tổng</div>
+          <div>Thao tác</div>
+        </div>
+        <!-- Sản phẩm sẽ render bằng JS -->
+      </div>
+
+      <!-- Thanh toán -->
+      <div class="cart-summary">
+        <h2>Thanh toán</h2>
+
+        <div class="summary-row">
+          <span>Tạm tính:</span>
+          <span id="subtotal">0 VND</span>
+        </div>
+        <div class="summary-row">
+          <span>Giảm giá:</span>
+          <span id="discount">0 VND</span>
+        </div>
+        <div class="summary-row total">
+          <span>Thành tiền:</span>
+          <span id="total">0 VND</span>
+        </div>
+
+        <!-- Nhập mã voucher -->
+        <div class="voucher">
+          <input type="text" id="voucher-code" placeholder="Nhập mã voucher">
+          <button id="apply-voucher">Áp dụng</button>
+          <span id="voucher-preview" class="voucher-preview" aria-hidden="true"></span>
+          <button id="toggle-voucher-list" class="toggle-voucher">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- Danh sách voucher -->
+        <div id="voucher-list" class="voucher-list hidden">
+          <h4>Voucher khả dụng</h4>
+          <ul>
+            <li data-voucher="SALE10">SALE10 - Giảm 10%</li>
+            <li data-voucher="SALE20">SALE20 - Giảm 20%</li>
+            <li data-voucher="FREESHIP">FREESHIP - Giảm 50,000 VND</li>
+          </ul>
+          <h4>Voucher không khả dụng</h4>
+          <ul>
+            <li>SALE50 - Hết hạn</li>
+            <li>NEWYEAR - Không đủ điều kiện</li>
+          </ul>
+          <!-- Voucher đã nhận (sẽ được render bằng JS) -->
+          <h4>Voucher đã nhận</h4>
+          <ul id="received-voucher-list">
+            <!-- JS will render received vouchers here -->
+          </ul>
+        </div>
+
+        <!-- Phương thức thanh toán -->
+        <div class="payment-method">
+          <h4>Phương thức thanh toán:</h4>
+          <label><input type="radio" name="payment-method" value="credit-card"> Thẻ tín dụng</label><br>
+          <label><input type="radio" name="payment-method" value="bank-transfer"> Chuyển khoản</label><br>
+          <label><input type="radio" name="payment-method" value="cash-on-delivery" checked> Thanh toán khi nhận hàng</label>
+        </div>
+
+        <!-- Form thẻ tín dụng -->
+        <div id="credit-card-form" class="hidden">
+          <h4>Thông tin thẻ tín dụng</h4>
+          <input type="text" id="card-number" placeholder="Số thẻ"><br>
+          <input type="text" id="card-holder" placeholder="Tên chủ thẻ"><br>
+          <input type="text" id="expiry-date" placeholder="MM/YY"><br>
+          <input type="text" id="cvv" placeholder="CVV">
+        </div>
+
+        <!-- Form chuyển khoản -->
+        <div id="bank-transfer-form" class="hidden">
+          <h4>Thông tin chuyển khoản</h4>
+          <select id="bank-list">
+            <option value="">Chọn ngân hàng</option>
+          </select><br>
+          <label>Số tài khoản</label>
+          <input type="text" id="bank-account-number" placeholder="Số tài khoản"><br>
+          <label>Tên chủ tài khoản</label>
+          <input type="text" id="bank-account-name" placeholder="Tên chủ tài khoản"><br>
+          <label>Nội dung chuyển khoản</label>
+          <input type="text" id="bank-account-note" placeholder="Nội dung chuyển khoản">
+        </div>
+
+        <!-- Thông tin khách hàng -->
+        <div class="customer-info">
+          <h4>Thông tin khách hàng</h4>
+          <label for="customer-name">Họ và tên:</label>
+          <input type="text" id="customer-name" placeholder="Nhập họ và tên"><br>
+          <label for="customer-phone">Số điện thoại:</label>
+          <input type="text" id="customer-phone" placeholder="Nhập số điện thoại"><br>
+          <label for="customer-address"></label>
+          <select id="city-select"><option value="">Chọn Tỉnh/TP</option></select>
+          <label for="district-select"></label>
+          <select id="district-select"><option value="">Chọn Quận/Huyện</option></select>
+          <label for="ward-select"></label>
+          <select id="ward-select"><option value="">Chọn Phường/Xã</option></select>
+          <label for="customer-address-detail"></label>
+          <input type="text" id="customer-address" placeholder="Số nhà, tên đường, toà nhà..."><br>
+          <div id="map" style="height: 300px; margin-top: 15px;"></div>
+        </div>
+
+        <!-- Nút Mua hàng -->
+        <div class="checkout-button">
+          <button id="checkout" class="btn-buy">Mua hàng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="voucher.js"></script>
+  <script src="cart.js"></script>
+  <script src="cart-count.js"></script>
+  <script>
+    // Đồng bộ hiển thị user trong header từ LocalStorage
+    (function () {
+      let logged = null;
+      try {
+        logged = JSON.parse(localStorage.getItem('loggedUser')) || JSON.parse(localStorage.getItem('loggedInUser'));
+      } catch (e) { logged = null; }
+      const el = document.getElementById('userEmail');
+      if (!el) return;
+      if (logged) {
+        el.innerText = logged.email || logged.user || 'User';
+      } else {
+        el.innerText = 'Đăng nhập';
+      }
+    })();
+  </script>
+  <script src="fix-mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hệ thống cửa hàng - ThaoVyStore</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stores.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <header id="header">
+    <div class="header-top">
+      <div class="container flex-between">
+        <div class="logo"><a href="index.html"><img src="src/Brown Beige Retro Shoe Store Logo.png" alt="Logo"></a></div>
+        <div class="header-search"><input id="search-input" placeholder="Tìm sản phẩm..."><button id="search-btn"><i class="fas fa-search"></i></button><ul id="search-suggestions" class="suggestions-list"></ul></div>
+        <div class="header-hotline"><i class="fas fa-phone-volume"></i> Hotline: 1800 2097</div>
+        <div class="header-account"><a href="account.html"><i class="fas fa-user"></i> <span id="userEmail">Đăng nhập</span></a></div>
+        <div class="header-cart"><a href="cart.html"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a></div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+          <li><a class="active" href="stores.html"><i class="fas fa-store"></i> Cửa hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container stores-main">
+    <!-- Search results (when searching products) -->
+    <div id="search-results" class="search-results hidden container">
+      <h2>Kết quả tìm kiếm</h2>
+      <div id="searchProducts" class="product-list"></div>
+    </div>
+
+    <div class="stores-layout">
+      <aside class="stores-list">
+        <div class="stores-panel">
+          <h2>Hệ thống cửa hàng</h2>
+          <p class="muted">Chọn cửa hàng để xem bản đồ, giờ mở cửa và liên hệ.</p>
+          <div class="filters">
+            <input id="filter-input" placeholder="Tìm thành phố, quận hoặc tên cửa hàng">
+          </div>
+          <div id="storesContainer" class="store-cards"></div>
+        </div>
+      </aside>
+
+      <section class="stores-map">
+        <div class="map-card">
+          <div class="map-header"><h3 id="map-title">ThaoVyStore - Đà Nẵng</h3></div>
+          <div class="map-frame">
+            <iframe id="mapFrame" src="https://www.google.com/maps?q=ThaoVyStore+Đà+Nẵng&output=embed" frameborder="0" loading="lazy"></iframe>
+          </div>
+          <div id="branchDetails" class="branch-details">
+            <p id="branchAddress">Địa chỉ: 123 Nguyễn Văn Linh, Q.Hải Châu, Đà Nẵng</p>
+            <p id="branchHours">Giờ mở cửa: 9:00 - 21:00</p>
+            <p id="branchPhone">Hotline: 090-xxx-xxxx</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-top">
+      <div class="footer-col">
+        <h4></h4>
+        <ul>
+          <li><a href=""></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="stores.js"></script>
+  <script src="about-search.js"></script>
+  <script src="cart-count.js"></script>
+  <script src="fix-mobile.js"></script>
+  <script>
+    try{ const u = JSON.parse(localStorage.getItem('loggedUser'))||JSON.parse(localStorage.getItem('loggedInUser')); if(u && u.email) document.getElementById('userEmail').innerText = u.email;}catch(e){}
+  </script>
+</body>
+</html>

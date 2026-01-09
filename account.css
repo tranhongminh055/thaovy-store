@@ -1,0 +1,80 @@
+body {
+    background: #f6f6f6;
+    font-family: Arial;
+    margin: 0;
+}
+
+.account-container {
+    width: 85%;
+    display: flex;
+    margin: 30px auto;
+}
+
+.account-menu {
+    width: 25%;
+    background: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.avatar-box img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.avatar-box input {
+    margin-top: 10px;
+}
+
+.account-menu ul {
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.account-menu li {
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.account-menu li.active {
+    color: red;
+}
+
+.account-content {
+    width: 75%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin: 6px 0 15px;
+    border-radius: 6px;
+}
+
+.save-btn {
+    background: red;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
