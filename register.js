@@ -26,8 +26,8 @@ function register() {
         return;
     }
 
-    // Call Netlify Functions to register
-    fetch('/.netlify/functions/auth-register', {
+    // Call API to register
+    fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })

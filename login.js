@@ -8,8 +8,8 @@ function login() {
         return;
     }
 
-    // Call Netlify Functions to authenticate
-    fetch('/.netlify/functions/auth-login', {
+    // Call API to authenticate
+    fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, device: navigator.userAgent })

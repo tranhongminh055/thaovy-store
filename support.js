@@ -15,7 +15,7 @@
   let customerName = sessionStorage.getItem('customerName') || '';
   let isChecking = false;
 
-  const API_URL = '/.netlify/functions';
+  const API_URL = '/api';
 
   function appendMessage(text, from='bot', type=''){
     const wrap = document.createElement('div'); 
